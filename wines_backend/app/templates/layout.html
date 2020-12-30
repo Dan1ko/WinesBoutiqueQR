@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>M.Chapoutier</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/x-icon" href={% static 'img/favicon.png' %}/>
+    <link rel="stylesheet" href="{% static 'css/bulma.min.css' %}">
+    {% block styles %}{% endblock %}
+</head>
+
+<body>
+<!-- NAVIGATION BAR BEGIN -->
+<nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="{% url 'docs:index' %}">M.Chapoutier</a>
+            {% if request.user.is_superuser %}
+                <a class="navbar-item" href="/admin/">Admin Panel</a>
+            {% endif %}
+        </div>
+</nav>
+<!-- NAVIGATION BAR END -->
+{% block content %} {% endblock %}
+
+<button id="btntop" class="button is-rounded is-large is-info" onclick="scrolltop()"
+        style="display: none; position: fixed; bottom: 2rem; right: 2rem; background-image: url('{% static "fontawesome-svg/angle-up.svg" %}'); background-size: cover; background-position: bottom">
+</button>
+
+{% block scripts %}{% endblock %}
+
+<script>
+    const topbtn = document.getElementById("btntop");
+
+    function scrolltop() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0;
+    };
+
+    window.onscroll = function () {
+        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+            topbtn.style.display = "block";
+        } else {
+            topbtn.style.display = "none";
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Get all "navbar-burger" elements
+        const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+        // Check if there are any navbar burgers
+        if ($navbarBurgers.length > 0) {
+            // Add a click event on each of them
+            $navbarBurgers.forEach(el => {
+                el.addEventListener('click', () => {
+                    // Get the target from the "data-target" attribute
+                    const target = el.dataset.target;
+                    const $target = document.getElementById(target);
+                    // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                    el.classList.toggle('is-active');
+                    $target.classList.toggle('is-active');
+                });
+            });
+        }
+    });
+</script>
+</body>
+
+</html>

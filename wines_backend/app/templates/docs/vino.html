@@ -1,0 +1,449 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <main>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">Wines API</h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="create">Wine create</h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/vino/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/vino/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">POST</span>
+                </p>
+                <p class="is-size-4">Required Header:&nbsp;&nbsp;&nbsp;<code class="is-size-4 has-text-weight-bold">Authorization</code>
+                </p>
+                <pre class="is-size-5">Token f6c89fd05539c22c976792cd971ea78d67b430c9</pre>
+                <p class="is-size-4">Required Fields:&nbsp;&nbsp;&nbsp;</p>
+                <code class="is-size-4 has-text-weight-bold">image : file </code><br>
+                <code class="is-size-4 has-text-weight-bold">image_description : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">title : string</code><br>
+                <p class="is-size-4">Available Fields:&nbsp;&nbsp;&nbsp;</p>
+                <code class="is-size-4 has-text-weight-bold">news_link : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">text : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">tags_{number} : tag id</code><br>
+
+                <p class="is-size-4">Translatable Fields: translations[lang][field]&nbsp; </p>
+                <code class="is-size-4 has-text-weight-bold">title </code><br>
+                <code class="is-size-4 has-text-weight-bold">image_description</code><br>
+                <code class="is-size-4 has-text-weight-bold">text : string</code><br>
+                <p class="is-size-4 mt-3">Example request Form-Data:</p>
+                <pre class="is-size-5">
+translations[en][title]
+translations[ru][image_description]
+image
+partner_link
+tags_1
+
+                </pre>
+
+                <p class="is-size-4 mt-3">Example response:</p>
+                <pre class="is-size-5">
+
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "id": 53,
+        "title": "Celery test",
+        "text": "Text",
+        "image_description": "Image",
+        "tags": [
+            {
+                "id": 5,
+                "name": "Efficient lighting",
+                "created_at": "2020-11-24T10:31:52.877409+06:00"
+            },
+            {
+                "id": 6,
+                "name": "Plastic",
+                "created_at": "2020-11-24T10:32:49.347791+06:00"
+            },
+            {
+                "id": 7,
+                "name": "Environmental management",
+                "created_at": "2020-11-24T10:33:57.454534+06:00"
+            }
+        ],
+        "image": "http://127.0.0.1:8000/media/news/24-12-2020/index_2tE0jf7.jpeg",
+        "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+        "created_at": "2020-12-24T14:17:43.907829+06:00"
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="vino_update">Wine update </h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/vino/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/vino/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">PATCH/PUT</span>
+                </p>
+                <p class="is-size-4">Required Header:&nbsp;&nbsp;&nbsp;<code class="is-size-4 has-text-weight-bold">Authorization</code>
+                </p>
+                <pre class="is-size-5">Token f6c89fd05539c22c976792cd971ea78d67b430c9</pre>
+                <p class="is-size-4">For PATCH and PUT profile_id is required:&nbsp;&nbsp;&nbsp;Example:
+                    https://pereto.tk/api/vino/2/</p>
+                 <p class="is-size-4">For GET QueryParam "lang" is required:&nbsp;&nbsp;&nbsp;Example:
+                    https://pereto.tk/api/vino/?lang=ky/</p>
+                <p class="is-size-4 mt-3">Example response for GET:</p>
+                <pre class="is-size-5">
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "count": 5,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": 3,
+                "title": "Жанылыктар",
+                "text": "Жакшы жанылыктар",
+                "image_description": "Сурот",
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/14-12-2020/index.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-14T14:24:50.571969+06:00"
+            },
+            {
+                "id": 4,
+                "title": "Celery текшеруу",
+                "text": "Жакшы жанылыктар",
+                "image_description": "Сурот",
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/21-12-2020/index.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-21T14:04:07.557941+06:00"
+            },
+            {
+                "id": 51,
+                "title": "Celery текшеруу",
+                "text": "Жакшы жанылыктар",
+                "image_description": "Сурот",
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/23-12-2020/index_Rq9U8ex.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-23T15:57:02.079652+06:00"
+            },
+            {
+                "id": 52,
+                "title": "Celery текшеруу",
+                "text": "Жакшы жанылыктар",
+                "image_description": "Сурот",
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/24-12-2020/index.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-24T13:01:46.362970+06:00"
+            },
+            {
+                "id": 53,
+                "title": "Celery текшеруу",
+                "text": "Жакшы жанылыктар",
+                "image_description": "Сурот",
+                "tags": [
+                    {
+                        "id": 5,
+                        "name": "Натыйжалуу жарык",
+                        "created_at": "2020-11-24T10:31:52.877409+06:00"
+                    },
+                    {
+                        "id": 6,
+                        "name": "Пластик",
+                        "created_at": "2020-11-24T10:32:49.347791+06:00"
+                    },
+                    {
+                        "id": 7,
+                        "name": "Курчап турган чөйрөнү башкаруу",
+                        "created_at": "2020-11-24T10:33:57.454534+06:00"
+                    }
+                ],
+                "image": "http://127.0.0.1:8000/media/news/24-12-2020/index_2tE0jf7.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-24T14:17:43.907829+06:00"
+            }
+        ],
+        "total_pages": 1
+    }
+}
+ </pre>
+
+ <p class="is-size-4">To get objects on all languages need to send request on:&nbsp;&nbsp;&nbsp;
+                    https://www.pereto.ml/api/vino/list/ <br>
+     <p class="is-size-4 mt-3">Example response for GET:</p>
+                <pre class="is-size-5">
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "count": 5,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": 3,
+                "translations": {
+                    "en": {
+                        "title": "News",
+                        "text": "Good news",
+                        "image_description": "Image"
+                    },
+                    "ru": {
+                        "title": "Новости",
+                        "text": "Хорошие новости",
+                        "image_description": "Картинка"
+                    },
+                    "ky": {
+                        "title": "Жанылыктар",
+                        "text": "Жакшы жанылыктар",
+                        "image_description": "Сурот"
+                    }
+                },
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/14-12-2020/index.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-14T14:24:50.571969+06:00"
+            },
+            {
+                "id": 4,
+                "translations": {
+                    "en": {
+                        "title": "Celery test",
+                        "text": "Text",
+                        "image_description": "Image"
+                    },
+                    "ru": {
+                        "title": "Проверка celery",
+                        "text": "Хорошие новости",
+                        "image_description": "Картинка"
+                    },
+                    "ky": {
+                        "title": "Celery текшеруу",
+                        "text": "Жакшы жанылыктар",
+                        "image_description": "Сурот"
+                    }
+                },
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/21-12-2020/index.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-21T14:04:07.557941+06:00"
+            },
+            {
+                "id": 51,
+                "translations": {
+                    "en": {
+                        "title": "Celery test",
+                        "text": "Text",
+                        "image_description": "Image"
+                    },
+                    "ru": {
+                        "title": "Проверка celery",
+                        "text": "Хорошие новости",
+                        "image_description": "Картинка"
+                    },
+                    "ky": {
+                        "title": "Celery текшеруу",
+                        "text": "Жакшы жанылыктар",
+                        "image_description": "Сурот"
+                    }
+                },
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/23-12-2020/index_Rq9U8ex.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-23T15:57:02.079652+06:00"
+            },
+            {
+                "id": 52,
+                "translations": {
+                    "en": {
+                        "title": "Celery test",
+                        "text": "Text",
+                        "image_description": "Image"
+                    },
+                    "ru": {
+                        "title": "Проверка celery",
+                        "text": "Хорошие новости",
+                        "image_description": "Картинка"
+                    },
+                    "ky": {
+                        "title": "Celery текшеруу",
+                        "text": "Жакшы жанылыктар",
+                        "image_description": "Сурот"
+                    }
+                },
+                "tags": [],
+                "image": "http://127.0.0.1:8000/media/news/24-12-2020/index.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-24T13:01:46.362970+06:00"
+            },
+            {
+                "id": 53,
+                "translations": {
+                    "en": {
+                        "title": "Celery test",
+                        "text": "Text",
+                        "image_description": "Image"
+                    },
+                    "ru": {
+                        "title": "Проверка celery",
+                        "text": "Хорошие новости",
+                        "image_description": "Картинка"
+                    },
+                    "ky": {
+                        "title": "Celery текшеруу",
+                        "text": "Жакшы жанылыктар",
+                        "image_description": "Сурот"
+                    }
+                },
+                "tags": [
+                    {
+                        "id": 7,
+                        "translations": {
+                            "en": {
+                                "name": "Environmental management"
+                            },
+                            "ru": {
+                                "name": "Экологический менеджмент"
+                            },
+                            "ky": {
+                                "name": "Курчап турган чөйрөнү башкаруу"
+                            }
+                        },
+                        "created_at": "2020-11-24T10:33:57.454534+06:00"
+                    }
+                ],
+                "image": "http://127.0.0.1:8000/media/news/24-12-2020/index_2tE0jf7.jpeg",
+                "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+                "created_at": "2020-12-24T14:17:43.907829+06:00"
+            }
+        ],
+        "total_pages": 1
+    }
+}
+                </pre>
+                    To get 1 object on all languages:
+                    https://www.pereto.ml/api/vino/list/id/
+ </p>
+                <p class="is-size-4 mt-3">Example response for GET:</p>
+                <pre class="is-size-5">
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "id": 53,
+        "translations": {
+            "en": {
+                "title": "Celery test",
+                "text": "Text",
+                "image_description": "Image"
+            },
+            "ru": {
+                "title": "Проверка celery",
+                "text": "Хорошие новости",
+                "image_description": "Картинка"
+            },
+            "ky": {
+                "title": "Celery текшеруу",
+                "text": "Жакшы жанылыктар",
+                "image_description": "Сурот"
+            }
+        },
+        "tags": [
+            {
+                "id": 7,
+                "translations": {
+                    "en": {
+                        "name": "Environmental management"
+                    },
+                    "ru": {
+                        "name": "Экологический менеджмент"
+                    },
+                    "ky": {
+                        "name": "Курчап турган чөйрөнү башкаруу"
+                    }
+                },
+                "created_at": "2020-11-24T10:33:57.454534+06:00"
+            }
+        ],
+        "image": "http://127.0.0.1:8000/media/news/24-12-2020/index_2tE0jf7.jpeg",
+        "news_link": "https://gitlab.com/Kebkulu/auca-pereto/",
+        "created_at": "2020-12-24T14:17:43.907829+06:00"
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="vino_delete">Wine delete</h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/vino/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/vino/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">DELETE</span>
+                </p>
+                <p class="is-size-4">Required Header:&nbsp;&nbsp;&nbsp;<code class="is-size-4 has-text-weight-bold">Authorization</code>
+                </p>
+                <pre class="is-size-5">Token f6c89fd05539c22c976792cd971ea78d67b430c9</pre>
+                <p class="is-size-4">For DELETE vino_id is required:&nbsp;&nbsp;&nbsp;Example:
+                    https://pereto.tk/api/vino/1/</p>
+                <pre class="is-size-5">
+
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {}
+}
+                </pre>
+            </div>
+        </section>
+
+ <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="vino_filter">Wines filters/search</h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/vino/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/vino/ or {{ api_root_url }}/api/vino/list/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">GET</span>
+                </p>
+                <p class="is-size-4">Available QueryParams&nbsp;&nbsp</p>
+                <code class="is-size-4 has-text-weight-bold">name : string </code><br>
+                <code class="is-size-4 has-text-weight-bold">price : integer </code><br>
+                <code class="is-size-4 has-text-weight-bold">search : string </code><br>
+                </pre>
+            </div>
+        </section>
+
+        <section class="section mb-6">
+            <div class="container">
+                <a class="button is-info is-large" href="{% url 'docs:index' %}">Home Page</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

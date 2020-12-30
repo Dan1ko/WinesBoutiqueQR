@@ -1,0 +1,178 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <main>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">USER</h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-4" id="login">User login</h2>
+                <p class="is-size-4">URL:&nbsp;&nbsp;&nbsp;
+                    <a href="{{ api_root_url }}/api/auth/token/" target="_blank" class="is-family-code has-text-danger">{{ api_root_url }}/api/auth/token/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">POST</span></p>
+                <p class="is-size-4">Required Fields:&nbsp;&nbsp;&nbsp;</p>
+                <code class="is-size-4 has-text-weight-bold">username : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">password : string</code><br>
+                <p class="is-size-4 mt-3">Example response:</p>
+                <pre class="is-size-5">
+
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "token": "f6c89fd05539c22c976792cd971ea78d67b430c9"
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+
+<section class="section">
+            <div class="container">
+                <h2 class="title is-4" id="logout">User logout</h2>
+                <p class="is-size-4">URL:&nbsp;&nbsp;&nbsp;
+                    <a href="{{ api_root_url }}/api/auth/logout/" target="_blank" class="is-family-code has-text-danger">{{ api_root_url }}/api/auth/logout/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">POST</span></p>
+                <p class="is-size-4">Required Fields: None(User must be authorized)&nbsp;&nbsp;&nbsp;</p>
+                <p class="is-size-4 mt-3">Example response:</p>
+                <pre class="is-size-5">
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {}
+}
+            </pre>
+        </div>
+    </section>
+
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-4" id="create">User CRUD</h2>
+                <p class="is-size-4">URL:&nbsp;&nbsp;&nbsp;
+                    <a href="{{ api_root_url }}/api/user/" target="_blank" class="is-family-code has-text-danger">{{ api_root_url }}/api/user/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">POST</span></p>
+                <p class="is-size-4">Required Fields:&nbsp;&nbsp;&nbsp;</p>
+                <code class="is-size-4 has-text-weight-bold">username : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">password : string</code><br>
+                <p class="is-size-4 mt-3">Example response:</p>
+                <pre class="is-size-5">
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "id": 8,
+        "region_id": 1,
+        "region": {
+            "id": 1,
+            "name": "Chui",
+            "created_at": "2020-11-27T14:51:24.026206+06:00"
+        },
+        "district_id": 1,
+        "district": {
+            "id": 1,
+            "name": "Alamedin",
+            "region": {
+                "id": 1,
+                "name": "Chui",
+                "created_at": "2020-11-27T14:51:24.026206+06:00"
+            },
+            "region_id": 1,
+            "created_at": "2020-11-27T14:55:00.914121+06:00"
+        },
+        "city_id": 1,
+        "city": {
+            "id": 1,
+            "name": "Bishkek",
+            "region": {
+                "id": 1,
+                "name": "Chui",
+                "created_at": "2020-11-27T14:51:24.026206+06:00"
+            },
+         "subscribed": true,
+            "region_id": 1,
+            "district": {
+                "id": 1,
+                "name": "Alamedin",
+                "region": {
+                    "id": 1,
+                    "name": "Chui",
+                    "created_at": "2020-11-27T14:51:24.026206+06:00"
+                },
+                "region_id": 1,
+                "created_at": "2020-11-27T14:55:00.914121+06:00"
+            },
+            "district_id": 1,
+            "created_at": "2020-11-27T15:37:13.485952+06:00"
+        },
+        "first_name": "Company",
+        "last_name": "",
+        "email": "danik@mail.ru",
+        "company_type": 1,
+        "company_size": 2,
+        "location": null,
+        "role": 1,
+        "created_at": "2020-12-16T12:37:54.573433+06:00",
+        "updated_at": "2020-12-16T12:37:54.718765+06:00"
+    }
+}
+            </pre>
+        </div>
+    </section>
+
+
+<section class="section">
+            <div class="container">
+                <h2 class="title is-4" id="reset">Password reset</h2>
+                <p class="is-size-4">URL:&nbsp;&nbsp;&nbsp;
+                    <a href="{{ api_root_url }}/api/user/reset_password/" target="_blank" class="is-family-code has-text-danger">{{ api_root_url }}/api/user/reset_password/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">POST</span></p>
+                <p class="is-size-4">Required Fields:&nbsp;&nbsp;&nbsp;</p>
+                <code class="is-size-4 has-text-weight-bold">email : str</code><br>
+                <p class="is-size-4 mt-3">Example response:</p>
+                <pre class="is-size-5">
+
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": "Your password reset!"
+}
+            </pre>
+        </div>
+    </section>
+
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-3 has-text-info" id="refresh">Important Note ***</h2>
+                <p class="subtitle is-3">Token usage:&nbsp;&nbsp;&nbsp;</p>
+                <p class="is-size-4 mt-3 mb-6">In request headers add <code class="has-text-weight-bold is-size-4">
+                    Authorization</code> header with value: <code class="is-size-4 has-text-weight-bold">Token&nbsp;&lt;your token&gt;</code></p>
+            </div>
+        </section>
+        <section class="section mb-6">
+            <div class="container">
+                <a class="button is-info is-large" href="{% url 'docs:index' %}">Home Page</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <main>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">Documentation</h1>
+                    <h2 class="subtitle">A simple documentation for <strong>M.Chapoutier</strong> api.</h2>
+                </div>
+            </div>
+        </section>
+        <section class="section mb-6">
+            <div class="container">
+                <div class="content">
+                    <ul>
+                         <li class="has-text-link is-size-3"><a class="has-text-dark" href="{% url 'docs:user' %}">User</a>
+                            <ul>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:user' %}#login">User Login</a></li>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:user' %}#logout">User Logout</a></li>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:user' %}#create">User CRUD</a></li>
+                            </ul>
+                        </li>
+                         <li class="has-text-link is-size-3"><a class="has-text-dark" href="{% url 'docs:horeca' %}">Horeca</a>
+                            <ul>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:horeca' %}#create">Create horeca</a>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:horeca' %}#horeca_update">Horeca update</a>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:horeca' %}#horeca_delete">Horeca delete</a>
+                                 <li class="has-text-link is-size-4"><a href="{% url 'docs:horeca' %}#vino_filter">Horeca filter/search by name</a>
+                            </ul>
+                        </li>
+                        <li class="has-text-link is-size-3"><a class="has-text-dark" href="{% url 'docs:vino' %}">Wines</a>
+                            <ul>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:vino' %}#create">Create wine</a>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:vino' %}#vino_update">Wine update</a>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:vino' %}#vino_delete">Wine delete</a>
+                                <li class="has-text-link is-size-4"><a href="{% url 'docs:vino' %}#vino_filter">Wine filter/search by name/price</a>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

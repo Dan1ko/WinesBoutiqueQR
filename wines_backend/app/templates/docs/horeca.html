@@ -1,0 +1,998 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <main>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">HoReCa API</h1>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="create">HoReCa creation</h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/horeca/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/horeca/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">POST</span>
+                </p>
+                <p class="is-size-4">Required Header:&nbsp;&nbsp;&nbsp;<code class="is-size-4 has-text-weight-bold">Authorization</code>
+                </p>
+                <pre class="is-size-5">Token f6c89fd05539c22c976792cd971ea78d67b430c9</pre>
+                <p class="is-size-4">Required Fields:&nbsp;&nbsp;&nbsp;</p>
+                <code class="is-size-4 has-text-weight-bold">image : file </code><br>
+                <code class="is-size-4 has-text-weight-bold">image_description : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">title : string</code><br>
+                <p class="is-size-4">Available Fields:&nbsp;&nbsp;&nbsp;</p>
+                <code class="is-size-4 has-text-weight-bold">text : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">resources : int (resource id)</code><br>
+                <code class="is-size-4 has-text-weight-bold">types : int (type id)</code><br>
+                <code class="is-size-4 has-text-weight-bold">tags : int (tag id)</code><br>
+
+                <p class="is-size-4">Translatable Fields: translations[lang][field]&nbsp; </p>
+                <code class="is-size-4 has-text-weight-bold">title </code><br>
+                <code class="is-size-4 has-text-weight-bold">image_description</code><br>
+                <code class="is-size-4 has-text-weight-bold">text : string</code><br>
+                <p class="is-size-4 mt-3">Example request Form-Data:</p>
+                <pre class="is-size-5">
+image
+translations[en][title]
+translations[en][text]
+translations[en][image_description]
+resources_1
+resources_2
+types_1
+types_2
+tags_1
+tags_2
+tags_3
+                </pre>
+
+                <p class="is-size-4 mt-3">Example response:</p>
+                <pre class="is-size-5">
+                    {
+                        "status": "success",
+                        "code": 200,
+                        "code_text": "success",
+                        "message": "OK",
+                        "data": {
+                                        "count": 0,
+                            "next": null,
+                            "previous": null,
+                            "results": [
+                                        {
+                                "id": 54,
+                            "image": "http://127.0.0.1:8000/media/articles/earth_RwwqRne.jpeg",
+                            "title": "Articles EN1",
+                            "text": "Article text EN1",
+                            "image_description": "Image EN1",
+                            "types": [
+                                {
+                                    "id": 2,
+                                    "name": "Restaurant",
+                                    "created_at": "2020-11-24T10:27:53.892612+06:00"
+                                },
+                                {
+                                    "id": 1,
+                                    "name": "Hotel",
+                                    "created_at": "2020-11-23T18:25:22.951499+06:00"
+                                }
+                            ],
+                            "resources": [
+                                {
+                                    "id": 1,
+                                    "name": "Water",
+                                    "created_at": "2020-11-23T18:13:41.166856+06:00"
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "Materials",
+                                    "created_at": "2020-11-24T10:25:56.336110+06:00"
+                                }
+                            ],
+                            "tags": [
+                                {
+                                    "id": 2,
+                                    "name": "Recycling",
+                                    "created_at": "2020-11-24T10:29:41.985412+06:00"
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "Food waste",
+                                    "created_at": "2020-11-24T10:31:03.872130+06:00"
+                                },
+                                {
+                                    "id": 8,
+                                    "name": "Cleaner production",
+                                    "created_at": "2020-11-24T10:34:30.507654+06:00"
+                                }
+                            ],
+                            "created_at": "2020-12-03T10:21:13.322400+06:00"
+                            }],
+                            "total_pages": 1
+
+
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="horeca_update">Article update </h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/horeca/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/horeca/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">PATCH/PUT</span>
+                </p>
+                <p class="is-size-4">Required Header:&nbsp;&nbsp;&nbsp;<code class="is-size-4 has-text-weight-bold">Authorization</code>
+                </p>
+                <pre class="is-size-5">Token f6c89fd05539c22c976792cd971ea78d67b430c9</pre>
+                <p class="is-size-4">For PATCH and PUT article_id is required:&nbsp;&nbsp;&nbsp;Example:
+                    https://pereto.tk/api/article/2/</p>
+
+                 <p class="is-size-4">For GET QueryParam "lang" is required:&nbsp;&nbsp;&nbsp;Example:
+                    https://www.pereto.ml/api/horeca/?lang=ky/</p>
+                <p class="is-size-4 mt-3">Example response for GET:</p>
+                <pre class="is-size-5">
+
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "id": 48,
+        "image": "http://127.0.0.1:8000/media/articles/index_ZMo8IKe.jpeg",
+        "title": "Articles EN",
+        "text": "Article text EN",
+        "image_description": "Image EN",
+        "types": [
+            {
+                "id": 2,
+                "name": "Restaurant",
+                "created_at": "2020-11-24T10:27:53.892612+06:00"
+            },
+            {
+                "id": 1,
+                "name": "Hotel",
+                "created_at": "2020-11-23T18:25:22.951499+06:00"
+            }
+        ],
+       "resources": [
+            {
+                "id": 1,
+                "name": "Water",
+                "created_at": "2020-11-23T18:13:41.166856+06:00"
+            },
+            {
+                "id": 3,
+                "name": "Materials",
+                "created_at": "2020-11-24T10:25:56.336110+06:00"
+            }
+        ],
+        "tags": [
+            {
+                "id": 2,
+                "name": "Recycling",
+                "created_at": "2020-11-24T10:29:41.985412+06:00"
+            },
+            {
+                "id": 4,
+                "name": "Food waste",
+                "created_at": "2020-11-24T10:31:03.872130+06:00"
+            },
+            {
+                "id": 8,
+                "name": "Cleaner production",
+                "created_at": "2020-11-24T10:34:30.507654+06:00"
+            }
+        ],
+        "created_at": "2020-11-25T14:57:35.941261+06:00"
+    }
+}
+ </pre>
+
+ <p class="is-size-4">To get objects on all languages need to send request on:&nbsp;&nbsp;&nbsp;
+                    https://www.pereto.ml/api/horeca/list/ <br>
+     <p class="is-size-4 mt-3">Example response for GET:</p>
+                <pre class="is-size-5">
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": [
+        {
+            "id": 48,
+            "translations": {
+                "en": {
+                    "title": "Articles EN",
+                    "text": "Article text EN",
+                    "image_description": "Image EN"
+                },
+                "ru": {
+                    "title": "Статья RU",
+                    "text": "Текст статьи RU",
+                    "image_description": "Изображение RU"
+                },
+                "ky": {
+                    "title": "Статья KY",
+                    "text": "Статьянын тексти KY",
+                    "image_description": "Сурот KY"
+                }
+            },
+            "resources": [
+                {
+                    "id": 2,
+                    "translations": {
+                        "en": {
+                            "name": "Waste"
+                        },
+                        "ru": {
+                            "name": "Отходы"
+                        },
+                        "ky": {
+                            "name": "Таштандылар"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:24:55.948416+06:00"
+                },
+                {
+                    "id": 3,
+                    "translations": {
+                        "en": {
+                            "name": "Materials"
+                        },
+                        "ru": {
+                            "name": "Материалы"
+                        },
+                        "ky": {
+                            "name": "Материалдар"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:25:56.336110+06:00"
+                },
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Water"
+                        },
+                        "ru": {
+                            "name": "Вода"
+                        },
+                        "ky": {
+                            "name": "Суу"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:13:41.166856+06:00"
+                }
+            ],
+            "tags": [
+                {
+                    "id": 2,
+                    "translations": {
+                        "en": {
+                            "name": "Recycling"
+                        },
+                        "ru": {
+                            "name": "Утилизация отходов"
+                        },
+                        "ky": {
+                            "name": "Кайра иштетуу"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:29:41.985412+06:00"
+                },
+                {
+                    "id": 4,
+                    "translations": {
+                        "en": {
+                            "name": "Food waste"
+                        },
+                        "ru": {
+                            "name": "Пищевые отходы"
+                        },
+                        "ky": {
+                            "name": "Тамак-аш калдыктары"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:31:03.872130+06:00"
+                },
+                {
+                    "id": 8,
+                    "translations": {
+                        "en": {
+                            "name": "Cleaner production"
+                        },
+                        "ru": {
+                            "name": "Более чистое производство"
+                        },
+                        "ky": {
+                            "name": "Таза өндүрүш"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:34:30.507654+06:00"
+                }
+            ],
+            "types": [
+                {
+                    "id": 2,
+                    "translations": {
+                        "en": {
+                            "name": "Restaurant"
+                        },
+                        "ru": {
+                            "name": "Ресторан"
+                        },
+                        "ky": {
+                            "name": "Ресторан"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:27:53.892612+06:00"
+                },
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Hotel"
+                        },
+                        "ru": {
+                            "name": "Гостиница"
+                        },
+                        "ky": {
+                            "name": "Мейманкана"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:25:22.951499+06:00"
+                }
+            ],
+            "image": "http://127.0.0.1:8000/media/articles/index_ZMo8IKe.jpeg",
+            "created_at": "2020-11-25T14:57:35.941261+06:00"
+        },
+        {
+            "id": 41,
+            "translations": {
+                "en": {
+                    "title": "Article11",
+                    "text": "Article text11",
+                    "image_description": "Image11"
+                },
+                "ru": {
+                    "title": "Статья11",
+                    "text": "Текст статьи11",
+                    "image_description": "Изображение11"
+                },
+                "ky": {
+                    "title": "Статья11",
+                    "text": "Статьянын тексти11",
+                    "image_description": "Сурот11"
+                }
+            },
+            "resources": [
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Water"
+                        },
+                        "ru": {
+                            "name": "Вода"
+                        },
+                        "ky": {
+                            "name": "Суу"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:13:41.166856+06:00"
+                }
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "translations": {
+                        "en": {
+                            "name": "Water management"
+                        },
+                        "ru": {
+                            "name": "Управление водными ресурсами"
+                        },
+                        "ky": {
+                            "name": "Суу чарба"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:30:27.396535+06:00"
+                }
+            ],
+            "types": [
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Hotel"
+                        },
+                        "ru": {
+                            "name": "Гостиница"
+                        },
+                        "ky": {
+                            "name": "Мейманкана"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:25:22.951499+06:00"
+                }
+            ],
+            "image": "http://127.0.0.1:8000/media/articles/earth_bPpqfLy.jpeg",
+            "created_at": "2020-11-24T18:14:56.124207+06:00"
+        },
+        {
+            "id": 42,
+            "translations": {
+                "en": {
+                    "title": "Article11",
+                    "text": "Article text11",
+                    "image_description": "Image11"
+                },
+                "ru": {
+                    "title": "Статья11",
+                    "text": "Текст статьи11",
+                    "image_description": "Изображение11"
+                },
+                "ky": {
+                    "title": "Статья11",
+                    "text": "Статьянын тексти11",
+                    "image_description": "Сурот11"
+                }
+            },
+            "resources": [
+                {
+                    "id": 2,
+                    "translations": {
+                        "en": {
+                            "name": "Waste"
+                        },
+                        "ru": {
+                            "name": "Отходы"
+                        },
+                        "ky": {
+                            "name": "Таштандылар"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:24:55.948416+06:00"
+                }
+            ],
+            "tags": [
+                {
+                    "id": 2,
+                    "translations": {
+                        "en": {
+                            "name": "Recycling"
+                        },
+                        "ru": {
+                            "name": "Утилизация отходов"
+                        },
+                        "ky": {
+                            "name": "Кайра иштетуу"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:29:41.985412+06:00"
+                }
+            ],
+            "types": [
+                {
+                    "id": 2,
+                    "translations": {
+                        "en": {
+                            "name": "Restaurant"
+                        },
+                        "ru": {
+                            "name": "Ресторан"
+                        },
+                        "ky": {
+                            "name": "Ресторан"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:27:53.892612+06:00"
+                }
+            ],
+            "image": "http://127.0.0.1:8000/media/articles/earth_A4l6hH9.jpeg",
+            "created_at": "2020-11-24T18:15:22.971548+06:00"
+        },
+        {
+            "id": 43,
+            "translations": {
+                "en": {
+                    "title": "Article11",
+                    "text": "Article text11",
+                    "image_description": "Image11"
+                },
+                "ru": {
+                    "title": "Статья11",
+                    "text": "Текст статьи11",
+                    "image_description": "Изображение11"
+                },
+                "ky": {
+                    "title": "Статья11",
+                    "text": "Статьянын тексти11",
+                    "image_description": "Сурот11"
+                }
+            },
+            "resources": [
+                {
+                    "id": 3,
+                    "translations": {
+                        "en": {
+                            "name": "Materials"
+                        },
+                        "ru": {
+                            "name": "Материалы"
+                        },
+                        "ky": {
+                            "name": "Материалдар"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:25:56.336110+06:00"
+                }
+            ],
+            "tags": [
+                {
+                    "id": 3,
+                    "translations": {
+                        "en": {
+                            "name": "Water management"
+                        },
+                        "ru": {
+                            "name": "Управление водными ресурсами"
+                        },
+                        "ky": {
+                            "name": "Суу чарба"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:30:27.396535+06:00"
+                }
+            ],
+            "types": [
+                {
+                    "id": 3,
+                    "translations": {
+                        "en": {
+                            "name": "Cafe"
+                        },
+                        "ru": {
+                            "name": "Кафе"
+                        },
+                        "ky": {
+                            "name": "Кафе"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:28:16.358234+06:00"
+                }
+            ],
+            "image": "http://127.0.0.1:8000/media/articles/earth_0EarMY6.jpeg",
+            "created_at": "2020-11-24T18:15:35.356064+06:00"
+        },
+        {
+            "id": 46,
+            "translations": {
+                "en": {
+                    "title": "Article11",
+                    "text": "Article text11",
+                    "image_description": "Image11"
+                },
+                "ru": {
+                    "title": "Статья11",
+                    "text": "Текст статьи11",
+                    "image_description": "Изображение11"
+                },
+                "ky": {
+                    "title": "Статья11",
+                    "text": "Статьянын тексти11",
+                    "image_description": "Сурот11"
+                }
+            },
+            "resources": [
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Water"
+                        },
+                        "ru": {
+                            "name": "Вода"
+                        },
+                        "ky": {
+                            "name": "Суу"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:13:41.166856+06:00"
+                }
+            ],
+            "tags": [
+                {
+                    "id": 5,
+                    "translations": {
+                        "en": {
+                            "name": "Efficient lighting"
+                        },
+                        "ru": {
+                            "name": "Эффективное освещение"
+                        },
+                        "ky": {
+                            "name": "Натыйжалуу жарык"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:31:52.877409+06:00"
+                }
+            ],
+            "types": [
+                {
+                    "id": 3,
+                    "translations": {
+                        "en": {
+                            "name": "Cafe"
+                        },
+                        "ru": {
+                            "name": "Кафе"
+                        },
+                        "ky": {
+                            "name": "Кафе"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:28:16.358234+06:00"
+                }
+            ],
+            "image": "http://127.0.0.1:8000/media/articles/earth_0hI4GHn.jpeg",
+            "created_at": "2020-11-24T18:19:06.552729+06:00"
+        },
+        {
+            "id": 47,
+            "translations": {
+                "en": {
+                    "title": "Article11",
+                    "text": "Article text11",
+                    "image_description": "Image11"
+                },
+                "ru": {
+                    "title": "Статья11",
+                    "text": "Текст статьи11",
+                    "image_description": "Изображение11"
+                },
+                "ky": {
+                    "title": "Статья11",
+                    "text": "Статьянын тексти11",
+                    "image_description": "Сурот11"
+                }
+            },
+            "resources": [
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Water"
+                        },
+                        "ru": {
+                            "name": "Вода"
+                        },
+                        "ky": {
+                            "name": "Суу"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:13:41.166856+06:00"
+                },
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Water"
+                        },
+                        "ru": {
+                            "name": "Вода"
+                        },
+                        "ky": {
+                            "name": "Суу"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:13:41.166856+06:00"
+                }
+            ],
+            "tags": [
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Energy efficiency"
+                        },
+                        "ru": {
+                            "name": "Энергоэффективность"
+                        },
+                        "ky": {
+                            "name": "Энергетикалык эффективдуулук"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:27:17.229856+06:00"
+                },
+                {
+                    "id": 5,
+                    "translations": {
+                        "en": {
+                            "name": "Efficient lighting"
+                        },
+                        "ru": {
+                            "name": "Эффективное освещение"
+                        },
+                        "ky": {
+                            "name": "Натыйжалуу жарык"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:31:52.877409+06:00"
+                },
+                {
+                    "id": 6,
+                    "translations": {
+                        "en": {
+                            "name": "Plastic"
+                        },
+                        "ru": {
+                            "name": "Пластик"
+                        },
+                        "ky": {
+                            "name": "Пластик"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:32:49.347791+06:00"
+                }
+            ],
+            "types": [
+                {
+                    "id": 1,
+                    "translations": {
+                        "en": {
+                            "name": "Hotel"
+                        },
+                        "ru": {
+                            "name": "Гостиница"
+                        },
+                        "ky": {
+                            "name": "Мейманкана"
+                        }
+                    },
+                    "created_at": "2020-11-23T18:25:22.951499+06:00"
+                },
+                {
+                    "id": 3,
+                    "translations": {
+                        "en": {
+                            "name": "Cafe"
+                        },
+                        "ru": {
+                            "name": "Кафе"
+                        },
+                        "ky": {
+                            "name": "Кафе"
+                        }
+                    },
+                    "created_at": "2020-11-24T10:28:16.358234+06:00"
+                }
+            ],
+            "image": "http://127.0.0.1:8000/media/articles/earth_tg5Xmb9.jpeg",
+            "created_at": "2020-11-25T11:55:46.452253+06:00"
+        }
+    ]
+}            </pre>
+                    To get 1 object on all languages:
+                    https://www.pereto.ml/api/horeca/list/id/
+ </p>
+                <p class="is-size-4 mt-3">Example response for GET:</p>
+                <pre class="is-size-5">
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {
+        "id": 48,
+        "translations": {
+            "en": {
+                "title": "Articles EN",
+                "text": "Article text EN",
+                "image_description": "Image EN"
+            },
+            "ru": {
+                "title": "Статья RU",
+                "text": "Текст статьи RU",
+                "image_description": "Изображение RU"
+            },
+            "ky": {
+                "title": "Статья KY",
+                "text": "Статьянын тексти KY",
+                "image_description": "Сурот KY"
+            }
+        },
+        "resources": [
+            {
+                "id": 2,
+                "translations": {
+                    "en": {
+                        "name": "Waste"
+                    },
+                    "ru": {
+                        "name": "Отходы"
+                    },
+                    "ky": {
+                        "name": "Таштандылар"
+                    }
+                },
+                "created_at": "2020-11-24T10:24:55.948416+06:00"
+            },
+            {
+                "id": 3,
+                "translations": {
+                    "en": {
+                        "name": "Materials"
+                    },
+                    "ru": {
+                        "name": "Материалы"
+                    },
+                    "ky": {
+                        "name": "Материалдар"
+                    }
+                },
+                "created_at": "2020-11-24T10:25:56.336110+06:00"
+            },
+            {
+                "id": 1,
+                "translations": {
+                    "en": {
+                        "name": "Water"
+                    },
+                    "ru": {
+                        "name": "Вода"
+                    },
+                    "ky": {
+                        "name": "Суу"
+                    }
+                },
+                "created_at": "2020-11-23T18:13:41.166856+06:00"
+            }
+        ],
+        "tags": [
+            {
+                "id": 2,
+                "translations": {
+                    "en": {
+                        "name": "Recycling"
+                    },
+                    "ru": {
+                        "name": "Утилизация отходов"
+                    },
+                    "ky": {
+                        "name": "Кайра иштетуу"
+                    }
+                },
+                "created_at": "2020-11-24T10:29:41.985412+06:00"
+            },
+            {
+                "id": 4,
+                "translations": {
+                    "en": {
+                        "name": "Food waste"
+                    },
+                    "ru": {
+                        "name": "Пищевые отходы"
+                    },
+                    "ky": {
+                        "name": "Тамак-аш калдыктары"
+                    }
+                },
+                "created_at": "2020-11-24T10:31:03.872130+06:00"
+            },
+            {
+                "id": 8,
+                "translations": {
+                    "en": {
+                        "name": "Cleaner production"
+                    },
+                    "ru": {
+                        "name": "Более чистое производство"
+                    },
+                    "ky": {
+                        "name": "Таза өндүрүш"
+                    }
+                },
+                "created_at": "2020-11-24T10:34:30.507654+06:00"
+            }
+        ],
+        "types": [
+            {
+                "id": 2,
+                "translations": {
+                    "en": {
+                        "name": "Restaurant"
+                    },
+                    "ru": {
+                        "name": "Ресторан"
+                    },
+                    "ky": {
+                        "name": "Ресторан"
+                    }
+                },
+                "created_at": "2020-11-24T10:27:53.892612+06:00"
+            },
+            {
+                "id": 1,
+                "translations": {
+                    "en": {
+                        "name": "Hotel"
+                    },
+                    "ru": {
+                        "name": "Гостиница"
+                    },
+                    "ky": {
+                        "name": "Мейманкана"
+                    }
+                },
+                "created_at": "2020-11-23T18:25:22.951499+06:00"
+            }
+        ],
+        "image": "http://127.0.0.1:8000/media/articles/index_ZMo8IKe.jpeg",
+        "created_at": "2020-11-25T14:57:35.941261+06:00"
+    }
+}
+                </pre>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="horeca_delete">HoReCa delete</h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/horeca/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/horeca/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">DELETE</span>
+                </p>
+                <p class="is-size-4">Required Header:&nbsp;&nbsp;&nbsp;<code class="is-size-4 has-text-weight-bold">Authorization</code>
+                </p>
+                <pre class="is-size-5">Token f6c89fd05539c22c976792cd971ea78d67b430c9</pre>
+                <p class="is-size-4">For DELETE horeca_id is required:&nbsp;&nbsp;&nbsp;Example:
+                    https://pereto.tk/api/horeca/1/</p>
+                <pre class="is-size-5">
+
+{
+    "status": "success",
+    "code": 200,
+    "code_text": "success",
+    "message": "OK",
+    "data": {}
+}
+                </pre>
+            </div>
+        </section>
+
+ <section class="section">
+            <div class="container">
+                <h2 class="title is-3" id="horeca_filter">HoReCa filters/search</h2>
+                <p class="is-size-4">URL:
+                    <a href="{{ api_root_url }}/api/horeca/" target="_blank"
+                       class="is-family-code has-text-danger">{{ api_root_url }}/api/horeca/ or {{ api_root_url }}/api/horeca/list/</a>
+                </p>
+                <p class="is-size-4">Method:&nbsp;&nbsp;&nbsp;<span class="is-family-code has-text-danger">GET</span>
+                </p>
+                <p class="is-size-4">Available QueryParams&nbsp;&nbsp</p>
+                <code class="is-size-4 has-text-weight-bold">name : string</code><br>
+                <code class="is-size-4 has-text-weight-bold">search : string </code><br>
+                </pre>
+            </div>
+        </section>
+
+        <section class="section mb-6">
+            <div class="container">
+                <a class="button is-info is-large" href="{% url 'docs:index' %}">Home Page</a>
+            </div>
+        </section>
+    </main>
+{% endblock %}
