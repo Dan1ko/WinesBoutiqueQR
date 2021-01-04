@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     #custom apps
     'backend.apps.users',
     'backend.apps.horeca',
-    'backend.apps.vino',
+    'backend.apps.wine',
 
     #installed packages
     'rest_framework',

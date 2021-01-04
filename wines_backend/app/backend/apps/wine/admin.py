@@ -1,4 +1,4 @@
-from backend.apps.vino.models import Wine
+from backend.apps.wine.models import Wine
 from parler.admin import TranslatableAdmin
 from django.contrib import admin
 

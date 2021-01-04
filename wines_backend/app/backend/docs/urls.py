@@ -7,5 +7,5 @@ urlpatterns = [
     path('', views.DocsView.as_view(), name='index'),
     path('user/', views.UserDocs.as_view(), name='user'),
     path('horeca/', views.HorecaDocs.as_view(), name='horeca'),
-    path('wine/', views.VinoDocs.as_view(), name='vino'),
+    path('wine/', views.VinoDocs.as_view(), name='wine'),
 ]

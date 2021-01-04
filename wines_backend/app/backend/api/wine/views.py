@@ -1,6 +1,6 @@
 from backend.utils import CustomJsonRenderer, StandardSetPagination
-from backend.api.vino.serializers import WineSerializer, WineListSerializer
-from backend.apps.vino.models import Wine
+from backend.api.wine.serializers import WineSerializer, WineListSerializer
+from backend.apps.wine.models import Wine
 from drf_nested_multipart_parser import NestedMultipartParser
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, generics, status

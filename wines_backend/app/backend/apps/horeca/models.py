@@ -1,6 +1,6 @@
 from parler.models import TranslatableModel, TranslatedFields
 from django.utils.translation import ugettext_lazy as _
-from backend.apps.vino.models import Wine
+from backend.apps.wine.models import Wine
 from django.utils import timezone
 from django.db import models
 import os

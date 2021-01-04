@@ -1,6 +1,6 @@
 from parler_rest.serializers import TranslatableModelSerializer, TranslatedFieldsField
 from backend.mixins import TranslatedSerializerMixin
-from backend.api.vino.serializers import *
+from backend.api.wine.serializers import *
 from backend.apps.horeca.models import Horeca
 from rest_framework import serializers
 

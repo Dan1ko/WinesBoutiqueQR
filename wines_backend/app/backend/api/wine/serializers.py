@@ -1,6 +1,6 @@
 from parler_rest.serializers import TranslatableModelSerializer, TranslatedFieldsField
 from backend.mixins import TranslatedSerializerMixin
-from backend.apps.vino.models import Wine
+from backend.apps.wine.models import Wine
 from rest_framework import serializers
 
 

@@ -27,5 +27,5 @@ class VinoDocs(View):
     def get(self, request):
        # api_root_url = '206.189.51.3:8000'
         api_root_url = 'www.chapoutier.com'
-        return render(request, 'docs/vino.html', {'api_root_url': api_root_url})
+        return render(request, 'docs/wine.html', {'api_root_url': api_root_url})
 

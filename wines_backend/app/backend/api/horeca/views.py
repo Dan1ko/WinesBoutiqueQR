@@ -5,7 +5,7 @@ from django.core.files.base import ContentFile, File
 
 from backend.apps.horeca.models import Horeca, HorecaWine
 from backend.api.horeca.serializers import HorecaSerializer, HorecaListSerializer, HorecaUpdateSerializer
-from backend.apps.vino.models import Wine
+from backend.apps.wine.models import Wine
 from backend.utils import CustomJsonRenderer, StandardSetPagination
 from drf_nested_multipart_parser import NestedMultipartParser
 from django_filters.rest_framework import DjangoFilterBackend
