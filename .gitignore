@@ -112,8 +112,8 @@ media/
 *.pid
 
 # migrations
-pereto_backend/app/backend/*/migrations/*
-!pereto_backend/app/backend/*/migrations/__init__.py
+wines_backend/app/backend/*/migrations/*
+!wines_backend/app/backend/*/migrations/__init__.py
 
 
 .env/

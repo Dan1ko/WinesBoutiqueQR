@@ -12,7 +12,7 @@ class Wine(TranslatableModel):
         name = re.sub(r'\s+|\W+', '_', filename.split('.')[-2])
         file = f'{name}.{ext}'
         today = timezone.now().date()
-        return os.path.join('horeca', today.strftime('%d-%m-%Y'), file)
+        return os.path.join('wine', today.strftime('%d-%m-%Y'), file)
     price = models.FloatField(default=0.0, blank=True)
     image = models.ImageField(upload_to=upload_to, blank=True, null=True)
     translations = TranslatedFields(
