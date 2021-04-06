@@ -1,8 +1,6 @@
 from io import BytesIO
 from PIL import Image, ImageDraw
-from django.conf import settings
-from django.core.files.base import ContentFile, File
-
+from django.core.files.base import File
 from backend.apps.horeca.models import Horeca, HorecaWine
 from backend.api.horeca.serializers import HorecaSerializer, HorecaListSerializer, HorecaUpdateSerializer
 from backend.apps.wine.models import Wine
@@ -15,7 +13,6 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 from backend.api.permissions import IsAdmin
 import qrcode
-from qrcode.image.pure import PymagingImage
 import re
 
 
